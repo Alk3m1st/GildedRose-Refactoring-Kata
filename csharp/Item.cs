@@ -23,6 +23,8 @@ namespace csharp
                 case ItemConstants.BackstagePasses:
                     UpdateQualityBackstagePasses();
                     break;
+                case ItemConstants.Sulfuras:
+                    break;
                 default:
                     UpdateQualityDefault();
                     break;
@@ -33,15 +35,17 @@ namespace csharp
         {
             if (Quality > 0)
             {
-                if (Name != ItemConstants.Sulfuras)
-                {
-                    DecrementQuality();
-                }
+                DecrementQuality();
             }
 
-            if (Name != ItemConstants.Sulfuras)
+            DecrementSellIn();
+
+            if (SellIn >= 0)
+                return;
+
+            if (Quality > 0)
             {
-                DecrementSellIn();
+                DecrementQuality();
             }
         }
 
@@ -63,6 +67,11 @@ namespace csharp
             }
 
             DecrementSellIn();
+
+            if (SellIn >= 0)
+                return;
+
+            ResetQuality();
         }
 
         private void UpdateQualityAgedBrie()
@@ -73,6 +82,14 @@ namespace csharp
             }
 
             DecrementSellIn();
+
+            if (SellIn >= 0)
+                return;
+
+            if (Quality < 50)
+            {
+                IncrementQuality();
+            }
         }
 
         public void IncrementQuality()
