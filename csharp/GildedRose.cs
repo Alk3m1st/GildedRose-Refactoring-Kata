@@ -20,17 +20,7 @@ namespace csharp
 
         private void UpdateItemQuality(Item item)
         {
-            if (item.Name != ItemConstants.AgedBrie && item.Name != ItemConstants.BackstagePasses)
-            {
-                if (item.Quality > 0)
-                {
-                    if (item.Name != ItemConstants.Sulfuras)
-                    {
-                        item.DecrementQuality();
-                    }
-                }
-            }
-            else
+            if (item.Name == ItemConstants.AgedBrie || item.Name == ItemConstants.BackstagePasses)
             {
                 if (item.Quality < 50)
                 {
@@ -56,6 +46,16 @@ namespace csharp
                     }
                 }
             }
+            else
+            {
+                if (item.Quality > 0)
+                {
+                    if (item.Name != ItemConstants.Sulfuras)
+                    {
+                        item.DecrementQuality();
+                    }
+                }
+            }
 
             if (item.Name != ItemConstants.Sulfuras)
             {
@@ -64,9 +64,20 @@ namespace csharp
 
             if (item.SellIn < 0)
             {
-                if (item.Name != ItemConstants.AgedBrie)
+                if (item.Name == ItemConstants.AgedBrie)
                 {
-                    if (item.Name != ItemConstants.BackstagePasses)
+                    if (item.Quality < 50)
+                    {
+                        item.IncrementQuality();
+                    }
+                }
+                else
+                {
+                    if (item.Name == ItemConstants.BackstagePasses)
+                    {
+                        item.ResetQuality();
+                    }
+                    else
                     {
                         if (item.Quality > 0)
                         {
@@ -75,17 +86,6 @@ namespace csharp
                                 item.DecrementQuality();
                             }
                         }
-                    }
-                    else
-                    {
-                        item.ResetQuality();
-                    }
-                }
-                else
-                {
-                    if (item.Quality < 50)
-                    {
-                        item.IncrementQuality();
                     }
                 }
             }
