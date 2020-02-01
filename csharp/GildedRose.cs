@@ -26,7 +26,7 @@ namespace csharp
                 {
                     if (item.Name != ItemConstants.Sulfuras)
                     {
-                        item.Quality = item.Quality - 1;
+                        item.DecrementQuality();
                     }
                 }
             }
@@ -34,7 +34,7 @@ namespace csharp
             {
                 if (item.Quality < 50)
                 {
-                    item.Quality = item.Quality + 1;
+                    item.IncrementQuality();
 
                     if (item.Name == ItemConstants.BackstagePasses)
                     {
@@ -42,7 +42,7 @@ namespace csharp
                         {
                             if (item.Quality < 50)
                             {
-                                item.Quality = item.Quality + 1;
+                                item.IncrementQuality();
                             }
                         }
 
@@ -50,7 +50,7 @@ namespace csharp
                         {
                             if (item.Quality < 50)
                             {
-                                item.Quality = item.Quality + 1;
+                                item.IncrementQuality();
                             }
                         }
                     }
@@ -59,7 +59,7 @@ namespace csharp
 
             if (item.Name != ItemConstants.Sulfuras)
             {
-                item.SellIn = item.SellIn - 1;
+                item.DecrementSellIn();
             }
 
             if (item.SellIn < 0)
@@ -72,20 +72,20 @@ namespace csharp
                         {
                             if (item.Name != ItemConstants.Sulfuras)
                             {
-                                item.Quality = item.Quality - 1;
+                                item.DecrementQuality();
                             }
                         }
                     }
                     else
                     {
-                        item.Quality = item.Quality - item.Quality;
+                        item.ResetQuality();
                     }
                 }
                 else
                 {
                     if (item.Quality < 50)
                     {
-                        item.Quality = item.Quality + 1;
+                        item.IncrementQuality();
                     }
                 }
             }

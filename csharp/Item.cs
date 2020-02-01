@@ -8,7 +8,27 @@
 
         public override string ToString()
         {
-            return this.Name + ", " + this.SellIn + ", " + this.Quality;
-        }  
+            return Name + ", " + SellIn + ", " + Quality;
+        }
+
+        public void IncrementQuality()
+        {
+            Quality++;
+        }
+
+        public void DecrementQuality()
+        {
+            Quality--;
+        }
+
+        public void DecrementSellIn()
+        {
+            SellIn--;
+        }
+
+        public void ResetQuality()
+        {
+            Quality = 0;
+        }
     }
 }
