@@ -20,6 +20,13 @@ namespace csharp
 
         private void UpdateItemQuality(Item item)
         {
+            StepOne(item);
+            UpdateSellIn(item);
+            FinalStep(item);
+        }
+
+        private void StepOne(Item item)
+        {
             if (item.Name == ItemConstants.AgedBrie || item.Name == ItemConstants.BackstagePasses)
             {
                 if (item.Quality < 50)
@@ -56,12 +63,18 @@ namespace csharp
                     }
                 }
             }
+        }
 
+        private void UpdateSellIn(Item item)
+        {
             if (item.Name != ItemConstants.Sulfuras)
             {
                 item.DecrementSellIn();
             }
+        }
 
+        private void FinalStep(Item item)
+        {
             if (item.SellIn < 0)
             {
                 if (item.Name == ItemConstants.AgedBrie)
