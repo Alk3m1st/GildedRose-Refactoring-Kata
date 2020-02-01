@@ -35,20 +35,14 @@ namespace csharp
 
                     if (item.Name == ItemConstants.BackstagePasses)
                     {
-                        if (item.SellIn < 11)
+                        if (item.SellIn < 11 && item.Quality < 50)
                         {
-                            if (item.Quality < 50)
-                            {
-                                item.IncrementQuality();
-                            }
+                            item.IncrementQuality();
                         }
 
-                        if (item.SellIn < 6)
+                        if (item.SellIn < 6 && item.Quality < 50)
                         {
-                            if (item.Quality < 50)
-                            {
-                                item.IncrementQuality();
-                            }
+                            item.IncrementQuality();
                         }
                     }
                 }
@@ -75,32 +69,23 @@ namespace csharp
 
         private void FinalStep(Item item)
         {
-            if (item.SellIn < 0)
+            if (item.SellIn >= 0)
+                return;
+
+            if (item.Name == ItemConstants.AgedBrie)
             {
-                if (item.Name == ItemConstants.AgedBrie)
+                if (item.Quality < 50)
                 {
-                    if (item.Quality < 50)
-                    {
-                        item.IncrementQuality();
-                    }
+                    item.IncrementQuality();
                 }
-                else
-                {
-                    if (item.Name == ItemConstants.BackstagePasses)
-                    {
-                        item.ResetQuality();
-                    }
-                    else
-                    {
-                        if (item.Quality > 0)
-                        {
-                            if (item.Name != ItemConstants.Sulfuras)
-                            {
-                                item.DecrementQuality();
-                            }
-                        }
-                    }
-                }
+            }
+            else if (item.Name == ItemConstants.BackstagePasses)
+            {
+                item.ResetQuality();
+            }
+            else if (item.Name != ItemConstants.Sulfuras && item.Quality > 0)
+            {
+                item.DecrementQuality();
             }
         }
     }
