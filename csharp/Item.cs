@@ -38,6 +38,11 @@ namespace csharp
                     DecrementQuality();
                 }
             }
+
+            if (Name != ItemConstants.Sulfuras)
+            {
+                DecrementSellIn();
+            }
         }
 
         private void UpdateQualityBackstagePasses()
@@ -56,6 +61,8 @@ namespace csharp
                     IncrementQuality();
                 }
             }
+
+            DecrementSellIn();
         }
 
         private void UpdateQualityAgedBrie()
@@ -64,6 +71,8 @@ namespace csharp
             {
                 IncrementQuality();
             }
+
+            DecrementSellIn();
         }
 
         public void IncrementQuality()

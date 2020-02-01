@@ -20,22 +20,8 @@ namespace csharp
 
         private void UpdateItemQuality(Item item)
         {
-            StepOne(item);
-            UpdateSellIn(item);
-            FinalStep(item);
-        }
-
-        private void StepOne(Item item)
-        {
             item.UpdateQuality();
-        }
-
-        private void UpdateSellIn(Item item)
-        {
-            if (item.Name != ItemConstants.Sulfuras)
-            {
-                item.DecrementSellIn();
-            }
+            FinalStep(item);
         }
 
         private void FinalStep(Item item)
