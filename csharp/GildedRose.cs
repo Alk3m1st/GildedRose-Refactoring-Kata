@@ -27,36 +27,7 @@ namespace csharp
 
         private void StepOne(Item item)
         {
-            if (item.Name == ItemConstants.AgedBrie || item.Name == ItemConstants.BackstagePasses)
-            {
-                if (item.Quality < 50)
-                {
-                    item.IncrementQuality();
-
-                    if (item.Name == ItemConstants.BackstagePasses)
-                    {
-                        if (item.SellIn < 11 && item.Quality < 50)
-                        {
-                            item.IncrementQuality();
-                        }
-
-                        if (item.SellIn < 6 && item.Quality < 50)
-                        {
-                            item.IncrementQuality();
-                        }
-                    }
-                }
-            }
-            else
-            {
-                if (item.Quality > 0)
-                {
-                    if (item.Name != ItemConstants.Sulfuras)
-                    {
-                        item.DecrementQuality();
-                    }
-                }
-            }
+            item.UpdateQuality();
         }
 
         private void UpdateSellIn(Item item)
