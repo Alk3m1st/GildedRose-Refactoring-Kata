@@ -6,19 +6,21 @@
 
         public override void UpdateQuality()
         {
-            if (Quality < 50)
-            {
-                IncrementQuality();
-            }
+            IncrementQuality();
 
             DecrementSellIn();
 
             if (SellIn >= 0)
                 return;
 
+            IncrementQuality();
+        }
+
+        public override void IncrementQuality()
+        {
             if (Quality < 50)
             {
-                IncrementQuality();
+                Quality++;
             }
         }
     }

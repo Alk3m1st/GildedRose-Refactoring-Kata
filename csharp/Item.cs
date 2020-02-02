@@ -41,7 +41,7 @@ namespace csharp
             }
         }
 
-        public void IncrementQuality()
+        public virtual void IncrementQuality()
         {
             Quality++;
         }
