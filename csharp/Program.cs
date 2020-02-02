@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace csharp
 {
@@ -36,6 +37,8 @@ namespace csharp
 				// this conjured item does not work properly yet
 				new Item {Name = "Conjured Mana Cake", SellIn = 3, Quality = 6}
             };
+
+            Items = ItemFactory.CreateChildItems(Items);
 
             var app = new GildedRose(Items);
 

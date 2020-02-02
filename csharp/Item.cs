@@ -8,31 +8,23 @@ namespace csharp
         public int SellIn { get; set; }
         public int Quality { get; set; }
 
+        public Item(Item item)
+        {
+            Name = item.Name;
+            Quality = item.Quality;
+            SellIn = item.SellIn;
+        }
+
+        public Item() { }
+
         public override string ToString()
         {
             return Name + ", " + SellIn + ", " + Quality;
         }
 
-        public void UpdateQuality()
+        public virtual void UpdateQuality()
         {
-            switch(Name)
-            {
-                case ItemConstants.AgedBrie:
-                    UpdateQualityAgedBrie();
-                    break;
-                case ItemConstants.BackstagePasses:
-                    UpdateQualityBackstagePasses();
-                    break;
-                case ItemConstants.Sulfuras:
-                    break;
-                default:
-                    UpdateQualityDefault();
-                    break;
-            }
-        }
-
-        private void UpdateQualityDefault()
-        {
+            // Base method
             if (Quality > 0)
             {
                 DecrementQuality();
@@ -46,49 +38,6 @@ namespace csharp
             if (Quality > 0)
             {
                 DecrementQuality();
-            }
-        }
-
-        private void UpdateQualityBackstagePasses()
-        {
-            if (Quality < 50)
-            {
-                IncrementQuality();
-
-                if (SellIn < 11 && Quality < 50)
-                {
-                    IncrementQuality();
-                }
-
-                if (SellIn < 6 && Quality < 50)
-                {
-                    IncrementQuality();
-                }
-            }
-
-            DecrementSellIn();
-
-            if (SellIn >= 0)
-                return;
-
-            ResetQuality();
-        }
-
-        private void UpdateQualityAgedBrie()
-        {
-            if (Quality < 50)
-            {
-                IncrementQuality();
-            }
-
-            DecrementSellIn();
-
-            if (SellIn >= 0)
-                return;
-
-            if (Quality < 50)
-            {
-                IncrementQuality();
             }
         }
 

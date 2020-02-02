@@ -21,9 +21,10 @@ namespace csharp
         [TestCase("Backstage passes to a TAFKAL80ETC concert", 5, 25, "Backstage passes to a TAFKAL80ETC concert, 4, 28")]
         [TestCase("Backstage passes to a TAFKAL80ETC concert", 10, 25, "Backstage passes to a TAFKAL80ETC concert, 9, 27")]
         [TestCase("Backstage passes to a TAFKAL80ETC concert", 15, 25, "Backstage passes to a TAFKAL80ETC concert, 14, 26")]
-        public void foo(string name, int sellIn, int quality, string expectedOutput)
+        public void Foo(string name, int sellIn, int quality, string expectedOutput)
         {
             IList<Item> Items = new List<Item> { new Item { Name = name, SellIn = sellIn, Quality = quality } };
+            Items = ItemFactory.CreateChildItems(Items);
             GildedRose app = new GildedRose(Items);
             app.UpdateQuality();
             Assert.AreEqual(expectedOutput, Items[0].ToString());
