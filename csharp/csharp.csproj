@@ -66,6 +66,10 @@
     <Compile Include="GildedRoseTest.cs" />
     <Compile Include="Item.cs" />
     <Compile Include="ItemConstants.cs" />
+    <Compile Include="ItemFactory.cs" />
+    <Compile Include="Items\ItemAgedBrie.cs" />
+    <Compile Include="Items\ItemBackstagePasses.cs" />
+    <Compile Include="Items\ItemSulfuras.cs" />
     <Compile Include="ItemTest.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
