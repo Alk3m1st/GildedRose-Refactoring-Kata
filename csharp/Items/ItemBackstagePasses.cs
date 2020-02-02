@@ -18,19 +18,22 @@
 
         public override void IncrementQuality()
         {
-            if (Quality < 50)
+            if (Quality >= 50)
+                return;
+
+            Quality++;
+
+            if (Quality >= 50)
+                return;
+
+            if (SellIn >= 11)
+                return;
+
+            Quality++;
+
+            if (SellIn < 6)
             {
                 Quality++;
-
-                if (SellIn < 11 && Quality < 50)
-                {
-                    Quality++;
-                }
-
-                if (SellIn < 6 && Quality < 50)
-                {
-                    Quality++;
-                }
             }
         }
     }
